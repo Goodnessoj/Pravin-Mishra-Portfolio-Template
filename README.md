@@ -53,10 +53,15 @@ To ensure the webpage auto update deploy date, I replaced the static deployment 
 ### Technical Implementation
 
 **JavaScript Code Used:**
+The script uses `window.onload` to ensure the DOM is fully loaded before injecting the date, preventing object-reference errors.
 ```javascript
 <script>
-  const d = new Date();
-  // Formats date to YYYY-MM-DD
-  const formattedDate = d.toISOString().split('T')[0];
-  document.getElementById("deployDate").textContent = formattedDate;
+  window.onload = function() {
+    const d = new Date();
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+
+    document.getElementById("deployDate").textContent = `${day}-${month}-${year}`;
+  };
 </script>
