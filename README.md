@@ -40,3 +40,23 @@ Add this line (example):
 ```
 
 ✅ This proof must be visible in your browser screenshot submission.
+
+## Dynamic Date Footer Implementation
+
+To ensure the webpage auto update deploy date, I replaced the static deployment date with a dynamic JavaScript implementation.
+
+### Key Changes
+* **Targeting:** Created a `<span>` with the ID `deployDate` in the footer.
+* **Automation:** Prompted AI to generate a lightweight JavaScript solution to handle date fetching.
+* **User Experience:** When a user visits the site, the date updates automatically to the current date.
+
+### Technical Implementation
+
+**JavaScript Code Used:**
+```javascript
+<script>
+  const d = new Date();
+  // Formats date to YYYY-MM-DD
+  const formattedDate = d.toISOString().split('T')[0];
+  document.getElementById("deployDate").textContent = formattedDate;
+</script>
